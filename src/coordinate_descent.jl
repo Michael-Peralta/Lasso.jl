@@ -615,9 +615,6 @@ function cdfit!(coef::SparseCoefficients{T}, cd::CoordinateDescent{T}, λ, crite
         prev_converged && converged && break
     end
 
-    (!prev_converged || !converged) &&
-        error("coordinate descent failed to converge in $maxiter iterations at λ = $λ")
-
     cd.dev = criterion == :coef ? ssr(coef, cd) : dev
     iter
 end
